@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-vazirmatn), system-ui, sans-serif;
+  --animate-float-slow: float-slow 15s ease-in-out infinite;
+  --animate-float-medium: float-medium 12s ease-in-out infinite;
+  --animate-float-fast: float-fast 8s ease-in-out infinite;
+  --animate-glow: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ============================================
+   DARK THEME VARIABLES (default)
+   ============================================ */
+:root,
+.dark {
+  --bg-page: #070913;
+  --bg-card: rgba(13, 18, 38, 0.55);
+  --bg-card-hover: rgba(22, 32, 59, 0.7);
+  --bg-input: rgba(2, 6, 23, 0.4);
+  --bg-input-focus: rgba(2, 6, 23, 0.7);
+  --bg-sidebar: rgba(7, 9, 19, 0.6);
+  --bg-nav: rgba(7, 9, 19, 0.75);
+
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --text-accent: #06B6D4;
+
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-card: rgba(255, 255, 255, 0.05);
+  --border-accent: rgba(6, 182, 212, 0.2);
+  --border-accent-active: rgba(6, 182, 212, 0.5);
+
+  --glow-cyan: rgba(6, 182, 212, 0.12);
+  --glow-teal: rgba(45, 212, 191, 0.06);
+  --glow-orb1: rgba(6, 182, 212, 0.10);
+  --glow-orb2: rgba(45, 212, 191, 0.05);
+  --glow-orb3: rgba(99, 102, 241, 0.05);
+
+  --glass-blur: blur(14px);
+  --glass-bg: rgba(13, 18, 38, 0.50);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.40);
+
+  --shadow-card: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow-cyan: 0 0 20px rgba(6, 182, 212, 0.15);
+}
+
+/* ============================================
+   LIGHT THEME VARIABLES
+   ============================================ */
+.light {
+  --bg-page: #F8FAFC;
+  --bg-card: rgba(255, 255, 255, 0.60);
+  --bg-card-hover: rgba(255, 255, 255, 0.80);
+  --bg-input: rgba(241, 245, 249, 0.60);
+  --bg-input-focus: rgba(255, 255, 255, 0.90);
+  --bg-sidebar: rgba(255, 255, 255, 0.60);
+  --bg-nav: rgba(248, 250, 252, 0.75);
+
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-accent: #0891B2;
+
+  --border-subtle: rgba(148, 163, 184, 0.12);
+  --border-card: rgba(148, 163, 184, 0.10);
+  --border-accent: rgba(8, 145, 178, 0.20);
+  --border-accent-active: rgba(8, 145, 178, 0.50);
+
+  --glow-cyan: rgba(6, 182, 212, 0.08);
+  --glow-teal: rgba(45, 212, 191, 0.05);
+  --glow-orb1: rgba(6, 182, 212, 0.08);
+  --glow-orb2: rgba(45, 212, 191, 0.05);
+  --glow-orb3: rgba(99, 102, 241, 0.04);
+
+  --glass-blur: blur(14px);
+  --glass-bg: rgba(255, 255, 255, 0.60);
+  --glass-border: rgba(148, 163, 184, 0.12);
+  --glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.05);
+
+  --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.04);
+  --shadow-cyan: 0 0 20px rgba(6, 182, 212, 0.08);
+}
+
+/* ============================================
+   BASE BODY STYLES (theme-aware)
+   ============================================ */
+body {
+  font-family: var(--font-vazirmatn), system-ui, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ============================================
+   GLASSMORPHISM UTILITIES (theme-aware)
+   ============================================ */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-panel-cyan {
+  background: rgba(6, 182, 212, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 8px 32px var(--glow-cyan);
+  transition: all 0.4s ease;
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-card);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), var(--shadow-cyan);
+}
+
+/* ============================================
+   THEME-AWARE FORM INPUTS
+   ============================================ */
+.theme-input {
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+.theme-input:focus {
+  background: var(--bg-input-focus);
+  border-color: var(--border-accent-active);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.08);
+}
+
+.theme-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   SCROLLBAR STYLES
+   ============================================ */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--bg-card);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--border-accent-active);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ============================================
+   AMBIENT BACKGROUND ORBS (theme-aware)
+   ============================================ */
+.orb-1 { background: var(--glow-orb1); }
+.orb-2 { background: var(--glow-orb2); }
+.orb-3 { background: var(--glow-orb3); }
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(30px, -50px) scale(1.1); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(-40px, 40px) scale(1.15); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(50px, 30px) scale(1.08); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 0.9; }
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES FOR SPECIFIC ELEMENTS
+   ============================================ */
+.light .text-slate-100  { color: #0F172A; }
+.light .text-slate-200  { color: #1E293B; }
+.light .text-slate-300  { color: #334155; }
+.light .text-slate-400  { color: #64748B; }
+.light .text-slate-500  { color: #94A3B8; }
+.light .bg-slate-950\/40 { background-color: rgba(241, 245, 249, 0.60); }
+.light .bg-slate-950\/80 { background-color: rgba(248, 250, 252, 0.85); }
+.light .bg-slate-900\/30 { background-color: rgba(241, 245, 249, 0.40); }
+.light .bg-slate-900\/40 { background-color: rgba(241, 245, 249, 0.50); }
+.light .bg-slate-900\/60 { background-color: rgba(241, 245, 249, 0.75); }
+.light .bg-slate-900    { background-color: #F1F5F9; }
+.light .bg-slate-950    { background-color: #F8FAFC; }
+.light .border-white\/5  { border-color: rgba(148, 163, 184, 0.10); }
+.light .border-white\/10 { border-color: rgba(148, 163, 184, 0.15); }
+.light .border-white\/15 { border-color: rgba(148, 163, 184, 0.20); }
+.light .divide-white\/5  { --tw-divide-opacity: 0.10; border-color: rgba(148, 163, 184, 0.10); }
+.light .hover\:bg-slate-800:hover  { background-color: #E2E8F0; }
+.light .hover\:bg-slate-900:hover  { background-color: #F1F5F9; }
+.light .hover\:bg-slate-900\/80:hover { background-color: rgba(241, 245, 249, 0.80); }
+
