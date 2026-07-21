@@ -23,9 +23,9 @@ export default function BookCard({ book, onViewDetails }: BookCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      whileHover={{ y: -8, scale: 1.03 }}
-      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-      className="relative flex flex-col h-[380px] w-full rounded-2xl overflow-hidden glass-card group cursor-pointer shadow-xl border-t-2 border-t-cyan-500/40"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      className="relative flex flex-col h-[380px] w-full rounded-2xl overflow-hidden glass-card group cursor-pointer shadow-xl border border-white/10 hover:border-cyan-500/40 transition-all duration-300"
       onClick={() => onViewDetails(book)}
     >
       {/* Top ambient cover glow inside card */}
@@ -39,7 +39,7 @@ export default function BookCard({ book, onViewDetails }: BookCardProps) {
             alt={book.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             priority={false}
           />
         ) : (
@@ -49,39 +49,23 @@ export default function BookCard({ book, onViewDetails }: BookCardProps) {
           </div>
         )}
 
-        {/* Age Group Tag - corner overlay */}
+        {/* Age Group Tag - corner overlay (strictly only for children category) */}
         {book.category === 'mndalan' && book.ageGroup && (
-          <div className="absolute top-3 right-3 bg-gradient-to-r from-cyan-500 to-teal-400 text-slate-950 font-bold px-3 py-1 rounded-full text-[11px] shadow-lg shadow-cyan-500/25 border border-cyan-400">
+          <div className="absolute top-3 right-3 bg-gradient-to-r from-cyan-500 to-teal-400 text-slate-950 font-bold px-3 py-1 rounded-full text-[11px] shadow-lg shadow-cyan-500/25 border border-cyan-400 z-10">
             {getAgeLabel(book.ageGroup)}
           </div>
         )}
 
-        {/* Hover glassmorphic overlay */}
-        <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[4px] flex flex-col items-center justify-center p-6 text-center">
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-            <div className="w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-cyan-500/10">
-              <Eye className="w-5 h-5 text-cyan-400" />
-            </div>
-            <h4 className="text-lg font-bold text-white mb-2 line-clamp-2 px-2">
-              {book.title}
-            </h4>
-            <p className="text-xs text-slate-300 mb-6 font-medium">
-              نووسینی: {book.author}
-            </p>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onViewDetails(book);
-              }}
-              className="bg-cyan-500 text-slate-950 hover:bg-cyan-400 font-bold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 shadow-md shadow-cyan-500/20 active:scale-95"
-            >
-              بینینی زانیاری
-            </button>
-          </div>
+        {/* Subtle quick view button on hover */}
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-10">
+          <span className="bg-slate-950/80 text-cyan-400 backdrop-blur-md font-bold text-xs px-4 py-1.5 rounded-full border border-cyan-500/30 flex items-center gap-1.5 shadow-lg">
+            <Eye className="w-3.5 h-3.5" />
+            بینینی زانیاری
+          </span>
         </div>
       </div>
 
-      {/* Book Metadata Area (Visible when not hovered) */}
+      {/* Book Metadata Area */}
       <div className="p-5 flex flex-col justify-between flex-grow relative z-10 bg-slate-950/20 backdrop-blur-[2px]">
         <div>
           <h3 className="text-md font-bold text-slate-100 group-hover:text-cyan-400 transition-colors duration-300 line-clamp-1">
@@ -93,7 +77,7 @@ export default function BookCard({ book, onViewDetails }: BookCardProps) {
         </div>
 
         <div className="flex items-center justify-between border-t border-white/5 pt-3.5 mt-2">
-          {/* Status instead of price */}
+          {/* Status badge */}
           <span className="text-[11px] text-cyan-400 font-semibold flex items-center gap-1.5 bg-cyan-500/5 px-2.5 py-1 rounded-lg border border-cyan-500/10">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             {book.status}

@@ -1,4 +1,4 @@
-export type Category = 'mndalan' | 'roman' | 'mejuy' | 'adults' | 'ayini';
+export type Category = 'mndalan' | 'roman' | 'mejuy' | 'ayini';
 
 export type AgeGroup = '4' | '6' | '8' | '10' | '12';
 

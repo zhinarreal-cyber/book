@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Feather, Scroll, Lock, BookOpen } from 'lucide-react';
+import { Sparkles, Feather, Scroll, BookOpen } from 'lucide-react';
 import { Category } from '../app/types';
 
 interface CategoryItem {
@@ -14,7 +14,6 @@ const CATEGORIES: CategoryItem[] = [
   { id: 'mndalan', label: 'منداڵان', icon: Sparkles },
   { id: 'roman', label: 'ڕۆمان', icon: Feather },
   { id: 'mejuy', label: 'مێژوویی', icon: Scroll },
-  { id: 'adults', label: 'سەروو ١٨ ساڵ', icon: Lock },
   { id: 'ayini', label: 'ئایینی', icon: BookOpen },
 ];
 

@@ -180,8 +180,6 @@ export default function Home() {
         return 'ڕۆمان و ئەدەبیات';
       case 'mejuy':
         return 'مێژووی کوردستان و جیهان';
-      case 'adults':
-        return 'سەروو ١٨ ساڵ (فیکر و فەلسەفە)';
       case 'ayini':
         return 'ئایین و عیرفان';
       default:

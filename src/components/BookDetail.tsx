@@ -30,8 +30,6 @@ export default function BookDetail({
         return 'ڕۆمان';
       case 'mejuy':
         return 'مێژوویی';
-      case 'adults':
-        return 'سەروو ١٨ ساڵ';
       case 'ayini':
         return 'ئایینی';
       default:

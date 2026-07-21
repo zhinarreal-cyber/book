@@ -170,7 +170,6 @@ export default function AdminPage() {
       mndalan: 'from-amber-400 to-orange-600',
       roman: 'from-blue-600 to-cyan-900',
       mejuy: 'from-yellow-600 to-amber-950',
-      adults: 'from-violet-700 to-slate-900',
       ayini: 'from-teal-600 to-emerald-950',
     };
     payload.coverColor = coverColorsMap[formData.category];
@@ -284,7 +283,6 @@ export default function AdminPage() {
       case 'mndalan': return 'منداڵان';
       case 'roman': return 'ڕۆمان';
       case 'mejuy': return 'مێژوویی';
-      case 'adults': return 'سەروو ١٨ ساڵ';
       case 'ayini': return 'ئایینی';
       default: return category;
     }
@@ -452,7 +450,7 @@ export default function AdminPage() {
       </header>
 
       {/* Stats Counter Row */}
-      <section className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8 relative z-10">
+      <section className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8 relative z-10">
         {/* Total */}
         <div className="glass-panel border border-white/10 rounded-2xl p-4 flex flex-col justify-between min-h-[90px]">
           <span className="text-xs text-slate-500 font-semibold">سەرجەم کتێبەکان</span>
@@ -472,11 +470,6 @@ export default function AdminPage() {
         <div className="glass-panel border border-white/5 rounded-2xl p-4 flex flex-col justify-between min-h-[90px]">
           <span className="text-xs text-slate-500 font-semibold">مێژوویی</span>
           <span className="text-2xl font-bold text-slate-200 mt-2 font-mono">{countByCategory('mejuy')}</span>
-        </div>
-        {/* Category Adults */}
-        <div className="glass-panel border border-white/5 rounded-2xl p-4 flex flex-col justify-between min-h-[90px]">
-          <span className="text-xs text-slate-500 font-semibold">سەروو ١٨</span>
-          <span className="text-2xl font-bold text-slate-200 mt-2 font-mono">{countByCategory('adults')}</span>
         </div>
         {/* Category Ayini */}
         <div className="glass-panel border border-white/5 rounded-2xl p-4 flex flex-col justify-between min-h-[90px]">
@@ -557,7 +550,6 @@ export default function AdminPage() {
                     <option value="roman">ڕۆمان</option>
                     <option value="mejuy">مێژوویی</option>
                     <option value="ayini">ئایینی</option>
-                    <option value="adults">سەروو ١٨ ساڵ</option>
                     <option value="mndalan">منداڵان</option>
                   </select>
                 </div>
